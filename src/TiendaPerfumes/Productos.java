@@ -79,7 +79,7 @@ public class Productos {
     public static void Buy_Product()
     {
         try
-        {            
+        {
             do
             {
                 bw.write("\nPorfavor escoja la forma de pago:\n 1. Con tarjeta de credito\n"
@@ -112,7 +112,7 @@ public class Productos {
         BufferedWriter bwf = new BufferedWriter( fw );
         try
         {
-            bw.write("porfavor digite los siguientes datos para continiar con el pago\n"
+            bw.write("porfavor digite los siguientes datos para continuar con el pago\n"
                     + "codigo del producto que quiere comprar...");
             bw.flush();
             codigo=br.readLine();
@@ -132,7 +132,7 @@ public class Productos {
                 numCedula=br.readLine();
                 bw.write("acontinuacion se generara su recibo de pago.\n"
                         + "cundo usted page el monto definido le llegara una notificacion "
-                        + "a su correo.\n gracis por su compra\n");
+                        + "a su correo.\n gracias por su compra\n");
                 bw.flush();
                 bw.write("\n\n...RECIBO DE PAGO...\n informacion del recibo\n");
                 bw.flush();
@@ -223,8 +223,7 @@ public class Productos {
             //}
             //bw.flush();
             //Perfumeria.printList();
-        }catch(Exception ex) {}
-                  
+        }catch(Exception ex) {}         
     }
     
     // here products are added asking for the necessary data
