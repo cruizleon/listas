@@ -10,6 +10,8 @@ import LinearDataStructures.Node;
 /**
  *
  * @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
+ * in this class is the structure of the list of perfumery products
  */
 public class Perfumeria implements Node {
     String NombreProduc=null;

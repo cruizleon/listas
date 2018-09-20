@@ -39,7 +39,7 @@ public class Productos {
     public static String menu()
     {
         String menu = "\nMenu \n 1. imprimir lista de productos \n 2. agregar un nuevo producto a la lista \n "
-                        + "3. eliminar un producto en espesifico\n 4. Buscar un producto por su codigo "
+                        + "3. eliminar un producto en espesifico por su nodo\n 4. Buscar un producto por su codigo "
                         + "\n 5. comprar un producto \n 6. salir de la tienda \n";
         return menu;
     }
@@ -49,7 +49,7 @@ public class Productos {
     {
         try
         {
-            do
+            for(int i =0;i<1;i++)
             {
                 bw.write("Porfavor escoja una opcion \n 1. confirmar su compra"
                         + "\n2. canselar su compra");
@@ -57,19 +57,21 @@ public class Productos {
                 op = Integer.parseInt(br.readLine());
                 switch(op)
                 {
-                    case 1: bw.write("gracias por su compra.\n el producto que"
+                    case 1: i+=1;
+                            bw.write("gracias por su compra.\n el producto que"
                                     + "usted compro llegara a su destino en un lapso de "
-                                    + "5 dias.");
+                                    + "5 dias.\n");
                             bw.flush();
                     break;
-                    case 2: bw.write("su compra ha sido canselada.");
+                    case 2: i+=1;
+                            bw.write("su compra ha sido canselada.\n");
                             bw.flush();
                     break;
                     default: bw.write("opcion incorrecta\n");
                              bw.flush();
                     break;
                 }
-            }while(op!=1||op!=2);
+            }
         }catch(Exception ex) {}
     }
     
@@ -80,19 +82,20 @@ public class Productos {
         {            
             do
             {
-                bw.write("Porfavor escoja la forma de pago:\n 1. Con tarjeta de credito\n"
-                        + "2. Descargar resivo y pagar en los puntos asignados\n "
-                        + "3. canselar compra ");
+                bw.write("\nPorfavor escoja la forma de pago:\n 1. Con tarjeta de credito\n"
+                        + " 2. Descargar recibo y pagar en los puntos asignados\n "
+                        + "3. cancelar compra \n");
                 bw.flush();
                 op = Integer.parseInt(br.readLine());
                 switch(op)
                 {
                     case 1: credit_card();//buy with credit card
-
+                            op=3;
                     break;
                     case 2: Download_Receipt();//download receipt to buy
+                            op=3;
                     break;
-                    case 3: bw.write("compra canselada\n");
+                    case 3: bw.write("compra cancelada\n");
                             bw.flush();
                     break;
                     default: bw.write("opcion incorrecta\n");
@@ -105,7 +108,7 @@ public class Productos {
     // // here the necessary data is requested to generate the receipt
     public static void Download_Receipt() throws IOException
     {
-        FileWriter fw = new FileWriter("ResiboPerfume.txt");
+        FileWriter fw = new FileWriter("ReciboPerfume.txt");
         BufferedWriter bwf = new BufferedWriter( fw );
         try
         {
@@ -118,25 +121,25 @@ public class Productos {
             if (result!=-1)
             {   
                 bw.flush();
-                bw.write("Nombre completo");
+                bw.write("Nombre completo\n");
                 bw.flush();
                 nombre=br.readLine();
-                bw.write("Correo Electronico");
+                bw.write("Correo Electronico\n");
                 bw.flush();
                 correo=br.readLine();
-                bw.write("numero de cedula");
+                bw.write("numero de cedula\n");
                 bw.flush();
                 numCedula=br.readLine();
                 bw.write("acontinuacion se generara su recibo de pago.\n"
                         + "cundo usted page el monto definido le llegara una notificacion "
                         + "a su correo.\n gracis por su compra\n");
                 bw.flush();
-                bw.write("...RECIBO DE PAGO...\n informacion del recibo\n");
+                bw.write("\n\n...RECIBO DE PAGO...\n informacion del recibo\n");
                 bw.flush();
                 Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
-                bw.write("\n Este recibo tiene una vigencia de dos dias.\n Para pagos acerrcarse"
-                        + "a los si guentes puntos de pago:\n BANCO CAJA SOCIAL\n"
-                        + "EFECTY\n DAVIVIENDA");
+                bw.write("\n Este recibo tiene una vigencia de dos dias.\n Para pagos acercarse"
+                        + "a los siguentes puntos de pago:\n BANCO CAJA SOCIAL\n"
+                        + "EFECTY\n DAVIVIENDA\n\n");
                 bw.flush();
             }   
         }catch(Exception ex) {}
@@ -146,7 +149,7 @@ public class Productos {
     { 
         try
         {
-            bw.write("porfavor digite los siguientes datos para continiar con el pago\n"
+            bw.write("porfavor digite los siguientes datos para continuar con la compra\n"
                     + "codigo del producto que quiere comprar...");
             bw.flush();
             codigo=br.readLine();
@@ -155,25 +158,25 @@ public class Productos {
             if (result!=-1)
             {   
                 bw.flush();
-                bw.write("Nombre completo");
+                bw.write("Nombre completo\n");
                 bw.flush();
                 nombre=br.readLine();
-                bw.write("Correo Electronico");
+                bw.write("Correo Electronico\n");
                 bw.flush();
                 correo=br.readLine();
-                bw.write("tipo de tarjeta");
+                bw.write("tipo de tarjeta\n");
                 bw.flush();
                 tipoTarjeta=br.readLine();
-                bw.write("Numero de la tarjeta");
+                bw.write("Numero de la tarjeta\n");
                 bw.flush();
                 numTarjeta=br.readLine();
-                bw.write("codigo de seguuridad");
+                bw.write("codigo de seguuridad\n");
                 bw.flush();
                 codSeguridad=br.readLine();
-                bw.write("direccion");
+                bw.write("direccion\n");
                 bw.flush();
                 direccion=br.readLine();
-                bw.write("codigo postal");
+                bw.write("codigo postal\n");
                 bw.flush();
                 cadPostal=br.readLine();
                 Confirm_Purchase();
@@ -198,23 +201,30 @@ public class Productos {
     {
         try
         {
-            bw.write("digite el codigo del producto que quiere eliminar...\n");
+            bw.write("digite el numero nodo que quiere eliminar...\n");
             bw.flush();
-            codigo=br.readLine();
-            int index = Perfumeria.indexOf(new Perfumeria(codigo));
-            Perfumeria.searchAll(new Perfumeria(null,codigo,null,null,0));
-            if (index != -1)
-            {
-                Perfumeria.deleteAtIndex(index);
-                bw.write("El producto deseado se a eliminado \n");
-            }
-            else
-            {
-               bw.write("No se encuentra el producto\n");
-            }
-            bw.flush();
-            Perfumeria.printList();
+            delete= Integer.parseInt(br.readLine());
+            Perfumeria.deleteAtIndex(delete);
+            
+            
+            //bw.write("digite el codigo del producto que quiere eliminar...\n");
+            //bw.flush();
+            //codigo=br.readLine();
+            //int index = Perfumeria.indexOf(new Perfumeria(codigo));
+            //Perfumeria.searchAll(new Perfumeria(null,codigo,null,null,0));
+            //if (index != -1)
+            //{
+                //Perfumeria.deleteAtIndex(index);
+                //bw.write("El producto deseado se a eliminado \n");
+            //}
+            //else
+            //{
+               //bw.write("No se encuentra el producto\n");
+            //}
+            //bw.flush();
+            //Perfumeria.printList();
         }catch(Exception ex) {}
+                  
     }
     
     // here products are added asking for the necessary data
