@@ -107,7 +107,8 @@ public class Productos {
                                 bw.flush();          
                             }
                     break;
-                    case 2: agregar_compra();
+                    case 2: i=-1;
+                            agregar_compra();
                     break;
                     case 3: i+=1;
                             bw.write("su compra ha sido canselada.\n");
