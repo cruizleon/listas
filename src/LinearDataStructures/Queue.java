@@ -1,5 +1,8 @@
 package LinearDataStructures;
 
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+
 /*
 # Queues based on Lists.
 #
@@ -59,5 +62,22 @@ public class Queue{
             temp = null;
             
             return temp;
+	}
+        
+        public void printQueue()
+	{
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter( System.out ));
+		Node temp = head;
+		
+		try
+		{
+			while(temp != null)
+			{
+				bw.write(temp.toString());
+				temp = temp.getNext();
+			}
+			bw.flush();
+		}
+		catch(Exception ex) { ex.printStackTrace(); }
 	}
 }

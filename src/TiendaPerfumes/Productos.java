@@ -24,13 +24,13 @@ import java.io.OutputStreamWriter;
  */
 public class Productos { 
     public static List Perfumeria= new List();
-    public static Queue requests = new Queue();
-    public static Stack reports = new Stack();
+    public static Queue Carrito = new Queue();
+    public static Stack HistorialCompras = new Stack();
 	
     static BufferedWriter bw = new BufferedWriter( new OutputStreamWriter( System.out ) );
     static BufferedReader br = new BufferedReader( new InputStreamReader( System.in ) );
 	
-    public static int op=0, precio=0, posicion=0, delete=0;
+    public static int op=0, precio=0, posicion=0, delete=0, recibo=0, credito=0;
     public static String nombre=null, codigo=null, marca=null, dirijidoA= null, 
                         correo=null, tipoTarjeta=null, numTarjeta=null, codSeguridad=null,
                         direccion=null, cadPostal=null, numCedula=null;
@@ -40,11 +40,47 @@ public class Productos {
     {
         String menu = "\nMenu \n 1. imprimir lista de productos \n 2. agregar un nuevo producto a la lista \n "
                         + "3. eliminar un producto en espesifico por su nodo\n 4. Buscar un producto por su codigo "
-                        + "\n 5. comprar un producto \n 6. salir de la tienda \n";
+                        + "\n 5. comprar un producto \n 6. ver historial de compras \n 7. salir de la tienda";
         return menu;
     }
+    public static void historial()
+    {
+        try
+        {
+            bw.write("su historial es: \n");
+            bw.flush();
+            HistorialCompras.printStack();
+        }catch(Exception ex) {}
+    }
+    public static void agregar_compra()
+    {
+        try
+        {
     
+            bw.write("porfavor digite los siguientes datos para continuar con el pago\n"
+                    + "codigo del producto que quiere comprar...");
+            bw.flush();
+            codigo=br.readLine();
+            Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
+            HistorialCompras.push(new HistorialCompras(codigo));
+            Confirm_Purchase();
+            Carrito.enqueue(new Carrito(codigo));
+        }catch(Exception ex) {}
+    }
     //This is the menu to confirm the online purchase
+    public static void InprimirRecibo()
+    {
+        try
+        {
+            bw.write("\n\n...RECIBO DE PAGO...\n informacion del recibo\n");
+            bw.flush();
+            Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
+            bw.write("\n Este recibo tiene una vigencia de dos dias.\n Para pagos acercarse"
+                    + "a los siguentes puntos de pago:\n BANCO CAJA SOCIAL\n"
+                    + "EFECTY\n DAVIVIENDA\n\n");
+            bw.flush();
+        }catch(Exception ex) {}
+    }
     public static void Confirm_Purchase()
     {
         try
@@ -52,18 +88,28 @@ public class Productos {
             for(int i =0;i<1;i++)
             {
                 bw.write("Porfavor escoja una opcion \n 1. confirmar su compra"
-                        + "\n2. canselar su compra");
+                        + "\n2. añadir mas productos a su compra \n3. canselar su compra\n");
                 bw.flush();
                 op = Integer.parseInt(br.readLine());
                 switch(op)
                 {
-                    case 1: i+=1;
-                            bw.write("gracias por su compra.\n el producto que"
-                                    + "usted compro llegara a su destino en un lapso de "
-                                    + "5 dias.\n");
-                            bw.flush();
+                    case 1: i+=1; 
+                            if(recibo==1)
+                            {
+                                recibo=0;
+                                InprimirRecibo();
+                            }
+                            else
+                            {
+                                bw.write("gracias por su compra.\n el producto que"
+                                         + "usted compro llegara a su destino en un lapso de "
+                                         + "5 dias.\n");
+                                bw.flush();          
+                            }
                     break;
-                    case 2: i+=1;
+                    case 2: agregar_compra();
+                    break;
+                    case 3: i+=1;
                             bw.write("su compra ha sido canselada.\n");
                             bw.flush();
                     break;
@@ -118,6 +164,7 @@ public class Productos {
             codigo=br.readLine();
             Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
             int result = Perfumeria.indexOf(new Perfumeria(codigo));
+            HistorialCompras.push(new HistorialCompras(codigo));
             if (result!=-1)
             {   
                 bw.flush();
@@ -134,13 +181,8 @@ public class Productos {
                         + "cundo usted page el monto definido le llegara una notificacion "
                         + "a su correo.\n gracias por su compra\n");
                 bw.flush();
-                bw.write("\n\n...RECIBO DE PAGO...\n informacion del recibo\n");
-                bw.flush();
-                Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
-                bw.write("\n Este recibo tiene una vigencia de dos dias.\n Para pagos acercarse"
-                        + "a los siguentes puntos de pago:\n BANCO CAJA SOCIAL\n"
-                        + "EFECTY\n DAVIVIENDA\n\n");
-                bw.flush();
+                recibo =1;
+                Confirm_Purchase();
             }   
         }catch(Exception ex) {}
     }
@@ -153,8 +195,9 @@ public class Productos {
                     + "codigo del producto que quiere comprar...");
             bw.flush();
             codigo=br.readLine();
-            Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
+            Perfumeria.linealSearch(new Perfumeria(nombre,codigo,marca,dirijidoA,precio));
             int result = Perfumeria.indexOf(new Perfumeria(codigo));
+            HistorialCompras.push(new HistorialCompras(codigo));
             if (result!=-1)
             {   
                 bw.flush();
@@ -179,6 +222,8 @@ public class Productos {
                 bw.write("codigo postal\n");
                 bw.flush();
                 cadPostal=br.readLine();
+                credito=1;
+                
                 Confirm_Purchase();
             }   
         }catch(Exception ex) {}
@@ -293,7 +338,9 @@ public class Productos {
                 break;
                 case 5: Buy_Product();
                 break;
-                case 6: bw.write("\n...gracias por su visita a la tienda... \n");
+                case 6: historial();
+                break;
+                case 7: bw.write("\n...gracias por su visita a la tienda... \n");
                         bw.flush();
                 break;
                 default: bw.write("opcion incorrecta\n");
@@ -301,7 +348,7 @@ public class Productos {
 
                 break;
             }
-        }while(op!=6);
+        }while(op!=7);
     }
     
 }

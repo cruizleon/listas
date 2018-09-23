@@ -6,31 +6,32 @@
 package TiendaPerfumes;
 
 import LinearDataStructures.Node;
-
 /**
  *
- * @author BOG-A409-E-005
+ * @author TATIANA
  */
-public class HistorialCompras implements Node{
+public class Carrito implements Node {
 
     String codigo=null;
-    Perfumeria next = null;
+
+    Carrito next = null;
+    String NombreProduc;
     
-    public HistorialCompras(String NumeroProducto)
+    public Carrito(String NumeroProducto)
     {
-        
+        this.codigo = NumeroProducto;
     }
-    public HistorialCompras(String nombre, String numero, String marca,String para, int precio)
+    public Carrito(String numero, String codigo)
    {
-    
        this.codigo = numero;
+
    }
     
 
     @Override
     public void setNext(Node node) 
     {
-        next =(Perfumeria)node;    
+        
     }
     
     @Override
@@ -40,7 +41,7 @@ public class HistorialCompras implements Node{
 
     @Override
     public Node clone() {
-        Perfumeria clone = new Perfumeria( codigo);
+        Perfumeria clone = new Perfumeria(codigo);
         return clone;    
     }
 
@@ -54,14 +55,12 @@ public class HistorialCompras implements Node{
     }
 
     @Override
-    public boolean isLessThan(Node node) 
-    {
-
+    public boolean isLessThan(Node node) {
         return false;    
     }
     
     public String toString()
     {
-        return this. codigo + "\n";
+        return this.NombreProduc +",El codigo del producto es: " + codigo;
     }
 }
