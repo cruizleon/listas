@@ -24,12 +24,13 @@ import java.io.OutputStreamWriter;
  */
 public class Productos { 
     public static List Perfumeria= new List();
-    public static Queue Carrito = new Queue();
-    public static Stack HistorialCompras = new Stack();
+    public static List Carrito = new List();
+    public static List HistorialCompras = new List();
 	
     static BufferedWriter bw = new BufferedWriter( new OutputStreamWriter( System.out ) );
     static BufferedReader br = new BufferedReader( new InputStreamReader( System.in ) );
 	
+    public static String h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h12,h13,h14,h15;
     public static int op=0, precio=0, posicion=0, delete=0, recibo=0, credito=0;
     public static String nombre=null, codigo=null, marca=null, dirijidoA= null, 
                         correo=null, tipoTarjeta=null, numTarjeta=null, codSeguridad=null,
@@ -49,7 +50,15 @@ public class Productos {
         {
             bw.write("su historial es: \n");
             bw.flush();
-            HistorialCompras.printStack();
+            HistorialCompras=Perfumeria;
+            HistorialCompras.linealSearch(new Perfumeria(null,h7,null,null,0));
+            HistorialCompras.linealSearch(new Perfumeria(null,h6,null,null,0));
+            HistorialCompras.linealSearch(new Perfumeria(null,h5,null,null,0));
+            HistorialCompras.linealSearch(new Perfumeria(null,h4,null,null,0));
+            HistorialCompras.linealSearch(new Perfumeria(null,h3,null,null,0));
+            HistorialCompras.linealSearch(new Perfumeria(null,h2,null,null,0));
+            HistorialCompras.linealSearch(new Perfumeria(null,h1,null,null,0));
+            //HistorialCompras.printList();
         }catch(Exception ex) {}
     }
     public static void agregar_compra()
@@ -62,9 +71,48 @@ public class Productos {
             bw.flush();
             codigo=br.readLine();
             Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
-            HistorialCompras.push(new HistorialCompras(codigo));
+            
+            if(h2==null)
+            {
+             h2=codigo;   
+            }
+            else
+            {
+                if(h3==null)
+                {
+                    h3=codigo;   
+                }
+                else
+                {
+                    if(h4==null)
+                    {
+                        h4=codigo;   
+                    }
+                    else
+                    {
+                        if(h5==null)
+                        {
+                            h5=codigo;   
+                        }
+                        else
+                        {
+                          if(h6==null)
+                            {
+                                h6=codigo;   
+                            }
+                            else
+                            {
+                                if(h2==null)
+                                {
+                                    h2=codigo;   
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             Confirm_Purchase();
-            Carrito.enqueue(new Carrito(codigo));
+            Carrito.insertAtEnd(new Carrito(codigo));
         }catch(Exception ex) {}
     }
     //This is the menu to confirm the online purchase
@@ -165,7 +213,7 @@ public class Productos {
             codigo=br.readLine();
             Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
             int result = Perfumeria.indexOf(new Perfumeria(codigo));
-            HistorialCompras.push(new HistorialCompras(codigo));
+            h1=codigo;
             if (result!=-1)
             {   
                 bw.flush();
@@ -198,7 +246,8 @@ public class Productos {
             codigo=br.readLine();
             Perfumeria.linealSearch(new Perfumeria(nombre,codigo,marca,dirijidoA,precio));
             int result = Perfumeria.indexOf(new Perfumeria(codigo));
-            HistorialCompras.push(new HistorialCompras(codigo));
+            Perfumeria.cloneList();
+            h1=codigo;
             if (result!=-1)
             {   
                 bw.flush();

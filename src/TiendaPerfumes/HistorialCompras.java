@@ -12,18 +12,24 @@ import LinearDataStructures.Node;
  * @author BOG-A409-E-005
  */
 public class HistorialCompras implements Node{
-
-    String codigo=null;
+    String NombreProduc=null;
+    String NumeroProduc=null;
+    String Marca =null; 
+    String PerfumesPara =null;
+    int Precio =0;
     Perfumeria next = null;
     
     public HistorialCompras(String NumeroProducto)
     {
-        
+        this.NumeroProduc = NumeroProducto;
     }
     public HistorialCompras(String nombre, String numero, String marca,String para, int precio)
    {
-    
-       this.codigo = numero;
+       this.NombreProduc = nombre;
+       this.NumeroProduc = numero;
+       this.Marca = marca;
+       this.PerfumesPara=para;
+       this.Precio = precio;
    }
     
 
@@ -40,28 +46,30 @@ public class HistorialCompras implements Node{
 
     @Override
     public Node clone() {
-        Perfumeria clone = new Perfumeria( codigo);
+        Perfumeria clone = new Perfumeria(NombreProduc, NumeroProduc, Marca,PerfumesPara,Precio);
         return clone;    
     }
 
     @Override
     public boolean isEqual(Node node) {
         Perfumeria temp = (Perfumeria)node;
-        if(this.codigo.equals(temp.NumeroProduc))
+        if(this.NumeroProduc.equals(temp.NumeroProduc))
             return true;
         
         return false;
     }
 
     @Override
-    public boolean isLessThan(Node node) 
-    {
-
+    public boolean isLessThan(Node node) {
+    Perfumeria temp = (Perfumeria)node;
+        if(this.Precio < temp.Precio)
+            return true;
+        
         return false;    
     }
     
     public String toString()
     {
-        return this. codigo + "\n";
+        return this.NombreProduc +", Codigo:" + NumeroProduc + ", Marca: " + Marca +", para: "+PerfumesPara+", valor total $" + Precio +"\n ";
     }
 }
