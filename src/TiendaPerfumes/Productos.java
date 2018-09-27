@@ -51,14 +51,35 @@ public class Productos {
             bw.write("su historial es: \n");
             bw.flush();
             HistorialCompras=Perfumeria;
+            if (h7!=null)
+            {
             HistorialCompras.linealSearch(new Perfumeria(null,h7,null,null,0));
+            }
+            if (h6!=null)
+            {
             HistorialCompras.linealSearch(new Perfumeria(null,h6,null,null,0));
+            }
+            if (h5!=null)
+            {
             HistorialCompras.linealSearch(new Perfumeria(null,h5,null,null,0));
+            }
+            if (h4!=null)
+            {
             HistorialCompras.linealSearch(new Perfumeria(null,h4,null,null,0));
+            }
+            if (h3!=null)
+            {
             HistorialCompras.linealSearch(new Perfumeria(null,h3,null,null,0));
+            }
+            if (h2!=null)
+            {
             HistorialCompras.linealSearch(new Perfumeria(null,h2,null,null,0));
+            }
+            if (h1!=null)
+            {
             HistorialCompras.linealSearch(new Perfumeria(null,h1,null,null,0));
-            //HistorialCompras.printList();
+            }
+            //Hist|orialCompras.printList();
         }catch(Exception ex) {}
     }
     public static void agregar_compra()
@@ -102,17 +123,17 @@ public class Productos {
                             }
                             else
                             {
-                                if(h2==null)
+                                if(h7==null)
                                 {
-                                    h2=codigo;   
+                                    h7=codigo;   
                                 }
                             }
                         }
                     }
                 }
             }
-            Confirm_Purchase();
             Carrito.insertAtEnd(new Carrito(codigo));
+            Confirm_Purchase();
         }catch(Exception ex) {}
     }
     //This is the menu to confirm the online purchase
@@ -120,13 +141,24 @@ public class Productos {
     {
         try
         {
-            bw.write("\n\n...RECIBO DE PAGO...\n informacion del recibo\n");
-            bw.flush();
+            FileWriter fw_recibo = new FileWriter("Recibo.umd");
+            BufferedWriter bw_txt = new BufferedWriter( fw_recibo );
+			
+           
+            bw_txt.write("\n\n...RECIBO DE PAGO...\n informacion del recibo\n");
+            bw_txt.flush();
+            bw_txt.write(nombre);
+            bw_txt.flush();
+            bw_txt.write(correo);
+            bw_txt.flush();
+            bw_txt.write(numCedula);
+            bw_txt.flush();
             Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
-            bw.write("\n Este recibo tiene una vigencia de dos dias.\n Para pagos acercarse"
+            Carrito.printList();
+            bw_txt.write("\n Este recibo tiene una vigencia de dos dias.\n Para pagos acercarse"
                     + "a los siguentes puntos de pago:\n BANCO CAJA SOCIAL\n"
                     + "EFECTY\n DAVIVIENDA\n\n");
-            bw.flush();
+            bw_txt.flush();
         }catch(Exception ex) {}
     }
     public static void Confirm_Purchase()
@@ -203,8 +235,6 @@ public class Productos {
     // // here the necessary data is requested to generate the receipt
     public static void Download_Receipt() throws IOException
     {
-        FileWriter fw = new FileWriter("ReciboPerfume.txt");
-        BufferedWriter bwf = new BufferedWriter( fw );
         try
         {
             bw.write("porfavor digite los siguientes datos para continuar con el pago\n"
