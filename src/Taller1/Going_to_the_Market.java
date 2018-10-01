@@ -46,7 +46,7 @@ public class Going_to_the_Market {
             {
                 Precio+=3500;
             }
-            bw.write("\nCeresa...\n");
+            bw.write("\nCereza...\n");
             bw.flush();
             cantidad = Integer.parseInt(br.readLine());
             for (int i = 0;i<cantidad;i++)
@@ -60,7 +60,7 @@ public class Going_to_the_Market {
             {
                 Precio+=5400;
             }
-            bw.write("\nDurasno...\n");
+            bw.write("\nDurazno...\n");
             bw.flush();
             cantidad = Integer.parseInt(br.readLine());
             for (int i = 0;i<cantidad;i++)
@@ -79,7 +79,7 @@ public class Going_to_the_Market {
             bw.flush();
             
                 
-            bw.write("\nAlberja...\n");
+            bw.write("\nArverja...\n");
             bw.flush();
             cantidad = Integer.parseInt(br.readLine());
             for (int i = 0;i<cantidad;i++)
@@ -119,16 +119,16 @@ public class Going_to_the_Market {
     }
     public static void main(String[]args)
     {
-        Fruits.insertAtBegin(new Fruits("Durasno",2.100));
+        Fruits.insertAtBegin(new Fruits("Durazno",2.100));
         Fruits.insertAtBegin(new Fruits("Sandia",5.400));
-        Fruits.insertAtBegin(new Fruits("Ceresa",500));
+        Fruits.insertAtBegin(new Fruits("Cereza",500));
         Fruits.insertAtBegin(new Fruits("Guanabana",3.500));
-        Fruits.insertAtBegin(new Fruits("Mnazana",1.000));
+        Fruits.insertAtBegin(new Fruits("Mazana",1.000));
         Vegetables.insertAtBegin(new Vegetables("Brocoli",1.100));
-        Vegetables.insertAtBegin(new Vegetables("Cabaza",4.000));
+        Vegetables.insertAtBegin(new Vegetables("Calabaza",4.000));
         Vegetables.insertAtBegin(new Vegetables("Coliflor",3.200));
         Vegetables.insertAtBegin(new Vegetables("Zuchini",2.500));
-        Vegetables.insertAtBegin(new Vegetables("Alberja",1.500));
+        Vegetables.insertAtBegin(new Vegetables("Arverja",1.500));
          
         CompraFrutas();
         try
