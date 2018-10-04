@@ -31,17 +31,17 @@ public class Productos {
     static BufferedReader br = new BufferedReader( new InputStreamReader( System.in ) );
 	
     public static String h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h12,h13,h14,h15;
-    public static int op=0, precio=0, posicion=0, delete=0, recibo=0, credito=0;
-    public static String nombre=null, codigo=null, marca=null, dirijidoA= null, 
-                        correo=null, tipoTarjeta=null, numTarjeta=null, codSeguridad=null,
+    public static int op=0, precio=0, posicion=0, delete=0, recibo=0, credito=0, tipoTarjeta=0;
+    public static String nombre=null, codigo=null, tipoTarjet=null,marca=null, dirijidoA= null, 
+                        correo=null, numTarjeta=null, codSeguridad=null,
                         direccion=null, cadPostal=null, numCedula=null;
         
     // this is the store's initial menu
     public static String menu()
     {
         String menu = "\nMenu \n 1. imprimir lista de productos \n 2. agregar un nuevo producto a la lista \n "
-                        + "3. eliminar un producto en espesifico por su nodo\n 4. Buscar un producto por su codigo "
-                        + "\n 5. comprar un producto \n 6. ver historial de compras \n 7. salir de la tienda";
+                        + "3. eliminar un producto en especifico por su nodo\n 4. Buscar un producto por su codigo "
+                        + "\n 5. Añadir al carrito \n 6. ver historial de compras \n 7. salir de la tienda\n";
         return menu;
     }
     public static void historial()
@@ -167,8 +167,8 @@ public class Productos {
         {
             for(int i =0;i<1;i++)
             {
-                bw.write("Porfavor escoja una opcion \n 1. confirmar su compra"
-                        + "\n2. añadir mas productos a su compra \n3. canselar su compra\n");
+                bw.write("Porfavor escoja una opcion \n1. confirmar su compra"
+                        + "\n2. añadir mas productos a su compra \n3. cancelar su compra\n");
                 bw.flush();
                 op = Integer.parseInt(br.readLine());
                 switch(op)
@@ -289,7 +289,24 @@ public class Productos {
                 correo=br.readLine();
                 bw.write("tipo de tarjeta\n");
                 bw.flush();
-                tipoTarjeta=br.readLine();
+                
+                    bw.write("1. VISA\n2. MasterCard\n3. American Express\n");
+                    bw.flush();
+                    tipoTarjeta= Integer.parseInt(br.readLine());
+                    switch(tipoTarjeta)
+                    {
+                        case 1: tipoTarjet="VISA";
+                        break;
+                        case 2: tipoTarjet="MasterCard";
+                        break;
+                        case 3: tipoTarjet="American Express";
+                        break;
+                        default: bw.write("opcion incorrecta\n");
+                                 bw.flush();
+
+                        break;
+                    }
+                
                 bw.write("Numero de la tarjeta\n");
                 bw.flush();
                 numTarjeta=br.readLine();
@@ -330,24 +347,6 @@ public class Productos {
             bw.flush();
             delete= Integer.parseInt(br.readLine());
             Perfumeria.deleteAtIndex(delete);
-            
-            
-            //bw.write("digite el codigo del producto que quiere eliminar...\n");
-            //bw.flush();
-            //codigo=br.readLine();
-            //int index = Perfumeria.indexOf(new Perfumeria(codigo));
-            //Perfumeria.searchAll(new Perfumeria(null,codigo,null,null,0));
-            //if (index != -1)
-            //{
-                //Perfumeria.deleteAtIndex(index);
-                //bw.write("El producto deseado se a eliminado \n");
-            //}
-            //else
-            //{
-               //bw.write("No se encuentra el producto\n");
-            //}
-            //bw.flush();
-            //Perfumeria.printList();
         }catch(Exception ex) {}         
     }
     
