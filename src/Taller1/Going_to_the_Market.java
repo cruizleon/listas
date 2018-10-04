@@ -18,7 +18,7 @@ import java.io.OutputStreamWriter;
 public class Going_to_the_Market {
     public static List Fruits =new List();
     public static List Vegetables= new List();
-    public static int op=0,cantidad=0,precio=0,Precio=0;
+    public static int cantidad=0,precio=0,Precio=0;
     static BufferedWriter bw = new BufferedWriter( new OutputStreamWriter( System.out ) );
     static BufferedReader br = new BufferedReader( new InputStreamReader( System.in ) );
 	

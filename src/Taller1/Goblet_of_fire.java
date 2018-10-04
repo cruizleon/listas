@@ -47,7 +47,7 @@ public class Goblet_of_fire {
         try
         {
             cantidad=cantidad-1;
-            //Students.deleteAtBegin();
+            Students.deleteAtBegin();
             calis=1;
         }catch(Exception ex) {}
     }
@@ -116,6 +116,5 @@ public class Goblet_of_fire {
             prob=Students;
             Names_chalice=prob;
             menu();
-        
     }
 }

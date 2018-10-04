@@ -9,7 +9,8 @@ import LinearDataStructures.Node;
 
 /**
  *
- * @author TATIANA
+ * @author cristhian Javier Ruiz leon
+ *         ID: 597465
  */
 public class Vegetables implements Node {
 
@@ -26,7 +27,7 @@ public class Vegetables implements Node {
     @Override
     public void setNext(Node node) 
     {
-        next =(Vegetables)node;
+        this.next =(Vegetables)node;
     }
     
     @Override
