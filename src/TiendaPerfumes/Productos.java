@@ -41,7 +41,7 @@ public class Productos {
     {
         String menu = "\nMenu \n 1. imprimir lista de productos \n 2. agregar un nuevo producto a la lista \n "
                         + "3. eliminar un producto en especifico por su nodo\n 4. Buscar un producto por su codigo "
-                        + "\n 5. Añadir al carrito \n 6. ver historial de compras \n 7. salir de la tienda\n";
+                        + "\n 5. Añadir al carrito \n 6. Confirmar compra de los productos en el carro\n 7. ver historial de compras \n 8. salir de la tienda\n";
         return menu;
     }
     public static void historial()
@@ -79,6 +79,7 @@ public class Productos {
             {
             HistorialCompras.linealSearch(new Perfumeria(null,h1,null,null,0));
             }
+            
             //Hist|orialCompras.printList();
         }catch(Exception ex) {}
     }
@@ -87,7 +88,7 @@ public class Productos {
         try
         {
     
-            bw.write("porfavor digite los siguientes datos para continuar con el pago\n"
+            bw.write("porfavor digite los siguientes datos para continuar \n"
                     + "codigo del producto que quiere comprar...");
             bw.flush();
             codigo=br.readLine();
@@ -202,6 +203,12 @@ public class Productos {
         }catch(Exception ex) {}
     }
     
+    //
+    public static void add_a_cart()
+    {
+            agregar_compra();
+    }
+    
     //in this menu the payment method is chosen
     public static void Buy_Product()
     {
@@ -233,19 +240,19 @@ public class Productos {
         }catch(Exception ex) {}
     }
     // // here the necessary data is requested to generate the receipt
-    public static void Download_Receipt() throws IOException
+    public static void Download_Receipt() 
     {
         try
         {
             bw.write("porfavor digite los siguientes datos para continuar con el pago\n"
                     + "codigo del producto que quiere comprar...");
             bw.flush();
-            codigo=br.readLine();
-            Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
-            int result = Perfumeria.indexOf(new Perfumeria(codigo));
-            h1=codigo;
-            if (result!=-1)
-            {   
+            //codigo=br.readLine();
+            //Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
+            //int result = Perfumeria.indexOf(new Perfumeria(codigo));
+            //h1=codigo;
+            //if (result!=-1)
+            //{   
                 bw.flush();
                 bw.write("Nombre completo\n");
                 bw.flush();
@@ -262,7 +269,7 @@ public class Productos {
                 bw.flush();
                 recibo =1;
                 Confirm_Purchase();
-            }   
+            //}   
         }catch(Exception ex) {}
     }
     // here the necessary data for the purchase with credit card are requested
@@ -273,14 +280,13 @@ public class Productos {
             bw.write("porfavor digite los siguientes datos para continuar con la compra\n"
                     + "codigo del producto que quiere comprar...");
             bw.flush();
-            codigo=br.readLine();
-            Perfumeria.linealSearch(new Perfumeria(nombre,codigo,marca,dirijidoA,precio));
-            int result = Perfumeria.indexOf(new Perfumeria(codigo));
-            Perfumeria.cloneList();
-            h1=codigo;
-            if (result!=-1)
-            {   
-                bw.flush();
+            //codigo=br.readLine();
+            //Perfumeria.linealSearch(new Perfumeria(nombre,codigo,marca,dirijidoA,precio));
+            //int result = Perfumeria.indexOf(new Perfumeria(codigo));
+            //Perfumeria.cloneList();
+            //h1=codigo;
+            //if (result!=-1)
+            //{   
                 bw.write("Nombre completo\n");
                 bw.flush();
                 nombre=br.readLine();
@@ -322,7 +328,7 @@ public class Productos {
                 credito=1;
                 
                 Confirm_Purchase();
-            }   
+            //}   
         }catch(Exception ex) {}
     }
     
@@ -415,11 +421,13 @@ public class Productos {
                 break;
                 case 4: Look_For_Product();
                 break;
-                case 5: Buy_Product();
+                case 5: add_a_cart();
                 break;
-                case 6: historial();
+                case 6: Buy_Product();
                 break;
-                case 7: bw.write("\n...gracias por su visita a la tienda... \n");
+                case 7: historial();
+                break;
+                case 8: bw.write("\n...gracias por su visita a la tienda... \n");
                         bw.flush();
                 break;
                 default: bw.write("opcion incorrecta\n");
@@ -427,7 +435,7 @@ public class Productos {
 
                 break;
             }
-        }while(op!=7);
+        }while(op!=8);
     }
     
 }

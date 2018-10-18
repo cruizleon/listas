@@ -14,7 +14,8 @@ import java.io.OutputStreamWriter;
 
 /**
  *
- * @author BOG-A406-E-018
+* @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class How_To_Train_Your_Dragon {
     

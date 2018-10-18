@@ -7,7 +7,8 @@ package Taller1;
 
 /**
  *
- * @author TATIANA
+* @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class army_one {
     

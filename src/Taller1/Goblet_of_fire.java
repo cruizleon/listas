@@ -14,7 +14,8 @@ import java.io.OutputStreamWriter;
 
 /**
  *
- * @author TATIANA
+* @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class Goblet_of_fire {
     public static List Students =new List();

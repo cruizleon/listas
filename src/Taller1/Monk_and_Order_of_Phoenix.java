@@ -7,7 +7,8 @@ package Taller1;
 
 /**
  *
- * @author TATIANA
+* @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class Monk_and_Order_of_Phoenix {
     

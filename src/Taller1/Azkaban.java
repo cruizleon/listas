@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Taller1;
 
 import java.io.BufferedReader;
@@ -8,7 +13,11 @@ import java.io.OutputStreamWriter;
 import java.util.Scanner;
 import java.util.Stack;
 
-
+/**
+ *
+* @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
+ */
 public class Azkaban {
 
     static BufferedWriter bw = new BufferedWriter( new OutputStreamWriter( System.out ) );

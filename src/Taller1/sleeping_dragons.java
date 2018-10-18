@@ -9,7 +9,8 @@ import LinearDataStructures.Node;
 
 /**
  *
- * @author BOG-A406-E-018
+* @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class sleeping_dragons implements Node {
 

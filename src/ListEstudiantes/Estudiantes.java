@@ -9,7 +9,8 @@ import LinearDataStructures.Node;
 
 /**
  *
- * @author BOG-A409-E-005
+* @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class Estudiantes implements Node{
     String Name = null;

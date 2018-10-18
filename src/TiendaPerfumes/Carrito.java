@@ -8,7 +8,8 @@ package TiendaPerfumes;
 import LinearDataStructures.Node;
 /**
  *
- * @author TATIANA
+* @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class Carrito implements Node {
 
