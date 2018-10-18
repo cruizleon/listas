@@ -88,7 +88,7 @@ public class Productos {
         try
         {
     
-            bw.write("porfavor digite los siguientes datos para continuar \n"
+            bw.write("Por favor digite los siguientes datos para continuar \n"
                     + "codigo del producto que quiere comprar...");
             bw.flush();
             codigo=br.readLine();
@@ -146,18 +146,12 @@ public class Productos {
             BufferedWriter bw_txt = new BufferedWriter( fw_recibo );
 			
            
-            bw_txt.write("\n\n...RECIBO DE PAGO...\n informacion del recibo\n");
+            bw_txt.write("\n\n...RECIBO DE PAGO...\n informacion del recibo\n"+"\n"+nombre+"\n"+correo+"\n"+numCedula);
             bw_txt.flush();
-            bw_txt.write(nombre);
-            bw_txt.flush();
-            bw_txt.write(correo);
-            bw_txt.flush();
-            bw_txt.write(numCedula);
-            bw_txt.flush();
-            Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
+            //Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
             Carrito.printList();
-            bw_txt.write("\n Este recibo tiene una vigencia de dos dias.\n Para pagos acercarse"
-                    + "a los siguentes puntos de pago:\n BANCO CAJA SOCIAL\n"
+            bw_txt.write("\n\n Este recibo tiene una vigencia de dos dias.\n Para pagos acercarse "
+                    + "a los siguentes puntos de pago:\n BANCO CAJA SOCIAL\n "
                     + "EFECTY\n DAVIVIENDA\n\n");
             bw_txt.flush();
         }catch(Exception ex) {}
@@ -168,7 +162,7 @@ public class Productos {
         {
             for(int i =0;i<1;i++)
             {
-                bw.write("Porfavor escoja una opcion \n1. confirmar su compra"
+                bw.write("Por favor escoja una opcion \n1. confirmar su compra"
                         + "\n2. añadir mas productos a su compra \n3. cancelar su compra\n");
                 bw.flush();
                 op = Integer.parseInt(br.readLine());
@@ -182,7 +176,7 @@ public class Productos {
                             }
                             else
                             {
-                                bw.write("gracias por su compra.\n el producto que"
+                                bw.write("gracias por su compra.\n el producto que "
                                          + "usted compro llegara a su destino en un lapso de "
                                          + "5 dias.\n");
                                 bw.flush();          
@@ -192,10 +186,10 @@ public class Productos {
                             agregar_compra();
                     break;
                     case 3: i+=1;
-                            bw.write("su compra ha sido canselada.\n");
+                            bw.write("Su compra ha sido cancelada.\n");
                             bw.flush();
                     break;
-                    default: bw.write("opcion incorrecta\n");
+                    default: bw.write("Opcion incorrecta\n");
                              bw.flush();
                     break;
                 }
@@ -216,7 +210,7 @@ public class Productos {
         {
             do
             {
-                bw.write("\nPorfavor escoja la forma de pago:\n 1. Con tarjeta de credito\n"
+                bw.write("\nPor favor escoja la forma de pago:\n 1. Con tarjeta de credito\n"
                         + " 2. Descargar recibo y pagar en los puntos asignados\n "
                         + "3. cancelar compra \n");
                 bw.flush();
@@ -229,10 +223,10 @@ public class Productos {
                     case 2: Download_Receipt();//download receipt to buy
                             op=3;
                     break;
-                    case 3: bw.write("compra cancelada\n");
+                    case 3: bw.write("Compra cancelada\n");
                             bw.flush();
                     break;
-                    default: bw.write("opcion incorrecta\n");
+                    default: bw.write("Opcion incorrecta\n");
                              bw.flush();
                     break;
                 }
@@ -244,8 +238,7 @@ public class Productos {
     {
         try
         {
-            bw.write("porfavor digite los siguientes datos para continuar con el pago\n"
-                    + "codigo del producto que quiere comprar...");
+            bw.write("Por favor digite los siguientes datos para continuar con el pago\n");
             bw.flush();
             //codigo=br.readLine();
             //Perfumeria.linealSearch(new Perfumeria(null,codigo,null,null,0));
@@ -263,9 +256,9 @@ public class Productos {
                 bw.write("numero de cedula\n");
                 bw.flush();
                 numCedula=br.readLine();
-                bw.write("acontinuacion se generara su recibo de pago.\n"
-                        + "cundo usted page el monto definido le llegara una notificacion "
-                        + "a su correo.\n gracias por su compra\n");
+                bw.write("A continuacion se generara su recibo de pago.\n"
+                        + "Cuando usted pague el monto definido le llegara una notificacion "
+                        + "a su correo.\n!GRACIAS POR SU COMPRA¡\n");
                 bw.flush();
                 recibo =1;
                 Confirm_Purchase();
@@ -277,8 +270,7 @@ public class Productos {
     { 
         try
         {
-            bw.write("porfavor digite los siguientes datos para continuar con la compra\n"
-                    + "codigo del producto que quiere comprar...");
+            bw.write("Por favor digite los siguientes datos para continuar con la compra\n");
             bw.flush();
             //codigo=br.readLine();
             //Perfumeria.linealSearch(new Perfumeria(nombre,codigo,marca,dirijidoA,precio));
@@ -293,7 +285,7 @@ public class Productos {
                 bw.write("Correo Electronico\n");
                 bw.flush();
                 correo=br.readLine();
-                bw.write("tipo de tarjeta\n");
+                bw.write("Tipo de tarjeta\n");
                 bw.flush();
                 
                     bw.write("1. VISA\n2. MasterCard\n3. American Express\n");
@@ -307,7 +299,7 @@ public class Productos {
                         break;
                         case 3: tipoTarjet="American Express";
                         break;
-                        default: bw.write("opcion incorrecta\n");
+                        default: bw.write("Opcion incorrecta\n");
                                  bw.flush();
 
                         break;
@@ -316,13 +308,13 @@ public class Productos {
                 bw.write("Numero de la tarjeta\n");
                 bw.flush();
                 numTarjeta=br.readLine();
-                bw.write("codigo de seguuridad\n");
+                bw.write("Codigo de seguridad\n");
                 bw.flush();
                 codSeguridad=br.readLine();
-                bw.write("direccion\n");
+                bw.write("Direccion\n");
                 bw.flush();
                 direccion=br.readLine();
-                bw.write("codigo postal\n");
+                bw.write("Codigo postal\n");
                 bw.flush();
                 cadPostal=br.readLine();
                 credito=1;
@@ -349,7 +341,7 @@ public class Productos {
     {
         try
         {
-            bw.write("digite el numero nodo que quiere eliminar...\n");
+            bw.write("Digite el numero del nodo que quiere eliminar...\n");
             bw.flush();
             delete= Integer.parseInt(br.readLine());
             Perfumeria.deleteAtIndex(delete);
@@ -402,8 +394,6 @@ public class Productos {
         bw.write("...LISTA DE PRODUCTOS...\n");
         bw.flush();
         Perfumeria.printList();
-        
-        
         do
         {
             bw.write(menu());
@@ -427,7 +417,7 @@ public class Productos {
                 break;
                 case 7: historial();
                 break;
-                case 8: bw.write("\n...gracias por su visita a la tienda... \n");
+                case 8: bw.write("\n...Gracias por su visita a la tienda... \n");
                         bw.flush();
                 break;
                 default: bw.write("opcion incorrecta\n");

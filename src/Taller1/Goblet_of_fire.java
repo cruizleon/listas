@@ -57,7 +57,7 @@ public class Goblet_of_fire {
         try
         {
             bw.write("\nDigite los datos correspondientes del nuevo producto\n"
-                    + "Nombre del estudaiante...");
+                    + "Nombre del estudiante...");
             bw.flush();
             nombre=br.readLine();
             bw.write("\n numero de su escuela...");
