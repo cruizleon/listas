@@ -1,5 +1,10 @@
 package Trees;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
 
 /*
 # Binary Tree Data Structure.
@@ -51,8 +56,7 @@ public class BinaryTree {
 		{
 			BinaryTreeNode temp = root;
 			BinaryTreeNode parent = root;
-                        
-			// while busca un hueco 
+			//Busqueda del hueco
 			while(temp != null)
 			{
 				parent = temp;
@@ -61,15 +65,14 @@ public class BinaryTree {
 				else
 					temp = temp.getRight();
 			}
-			//pone al hijo en el hueco
+			//Inserción en el hueco
 			if(node.isLessThan(parent))
 				parent.setLeft(node);
 			else
 				parent.setRight(node);
 		}
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param value
@@ -79,7 +82,6 @@ public class BinaryTree {
 	{
 		BinaryTreeNode temp = root;
 		
-                //
 		while(temp != null)
 		{
 			if(temp.isEqual(nodeToSearch))
@@ -93,38 +95,80 @@ public class BinaryTree {
 		
 		return temp;
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param value
 	 */
 	public void delete(BinaryTreeNode nodeToDelete)
 	{
-            BinaryTreeNode temp = root;
-            BinaryTreeNode parent = root;
-            
-            while(temp != null)
-            {
-                
-                if(temp.isEqual(nodeToDelete))
-                        break;
-                else
-                        parent = temp;
-                
-                        if(nodeToDelete.isLessThan(temp))
-                                temp = temp.getLeft();
-			else
-				temp = temp.getRight();
-            }
-            if(temp!=null)
-            {
-                
-            }
+		BinaryTreeNode temp = root;
+                BinaryTreeNode parent = root;
 		
-	}
-	
-	
+		while(temp != null)
+		{
+                    
+			if(temp.isEqual(nodeToDelete))
+				break;
+			else
+                        {
+                            parent = temp;
+                        
+				if(nodeToDelete.isLessThan(temp))
+					temp = temp.getLeft();
+				else
+					temp = temp.getRight();
+		}
+            }
+                if (temp!= null)
+                {
+                    if (isLeaf(temp))
+                    {
+                       if(temp.isLessThan(parent))
+                           parent.setLeft(null);
+                       else
+                           parent.setRight(null);
+                    }
+                    else
+                    {
+                        if(oneChild(temp))
+                        {
+                            if(temp.getLeft() != null)
+                            {
+                                if(temp.isLessThan(parent))
+                                    parent.setLeft(temp.getLeft());
+                                else
+                                    parent.setRight(temp.getRight());
+                            }
+                            else
+                            {
+                                if(temp.isLessThan(parent))
+                                    parent.setLeft(temp.getRight());
+                                else
+                                    parent.setRight(temp.getRight());
+                            }
+                        }
+                        else
+                        {
+                            BinaryTreeNode less = temp.getRight();
+                            
+                            while(less.getLeft() != null)
+                                less.getLeft();
+                            
+                            delete(less);
+                            
+                            less.setLeft(temp.getLeft());
+                            less.setRight(temp.getRight());
+                            
+                            if(temp.isLessThan(parent))
+                                parent.setLeft(less);
+                            else
+                                parent.setRight(less);
+                        }
+                    }
+                }
+            }
+
 	/**
 	 * 
 	 * @param node
@@ -146,7 +190,6 @@ public class BinaryTree {
 		return (node.getLeft() != null && node.getRight() != null) ? false : true;
 	}
 	
-	
 	/**
 	 * 
 	 * @param node
@@ -160,8 +203,7 @@ public class BinaryTree {
 			preorder(node.getRight());
 		}
 	}
-	
-	
+        
 	/**
 	 * 
 	 * @param node
@@ -176,8 +218,7 @@ public class BinaryTree {
 		}
 		
 	}
-	
-	
+        
 	/**
 	 * 
 	 * @param node
@@ -189,7 +230,26 @@ public class BinaryTree {
 			inorder(node.getLeft());
 			System.out.print (node.toString() + " ");
 			inorder(node.getRight());
-		}
-			
+		}	
 	}
+        
+        public static void main(String[]args)
+        {
+            BinaryTree bt = new BinaryTree();
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            try
+            {
+               String[] numbers = br.readLine().split(",");
+               for(int i = 0; i < numbers.length; i++)
+               bt.insert( new BinaryNodeExample(Integer.parseInt(numbers[i])));
+               
+               bt.preorder(bt.root);
+               
+               //bt.preorder(bt.root);
+               //bt.delete(new BinaryNodeExample(27));
+               //System.out.println();
+               //bt.preorder(bt.root);
+            }
+            catch (Exception ex){}
+        }
 }
