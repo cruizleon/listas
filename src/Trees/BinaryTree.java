@@ -102,72 +102,75 @@ public class BinaryTree {
 	 */
 	public void delete(BinaryTreeNode nodeToDelete)
 	{
-		BinaryTreeNode temp = root;
-                BinaryTreeNode parent = root;
+            BinaryTreeNode temp = root;
+            BinaryTreeNode parent = root;
+            BinaryTreeNode r = root;
 		
-		while(temp != null)
-		{
+            while(temp != null)
+            {
                     
-			if(temp.isEqual(nodeToDelete))
-				break;
-			else
-                        {
-                            parent = temp;
+                if(temp.isEqual(nodeToDelete))
+                {
+                    break;
+                }
+		else
+                {
+                    parent = temp;
                         
-				if(nodeToDelete.isLessThan(temp))
-					temp = temp.getLeft();
-				else
-					temp = temp.getRight();
+                    if(nodeToDelete.isLessThan(temp))
+                        temp = temp.getLeft();
+                    else
+                        temp = temp.getRight();
 		}
             }
-                if (temp!= null)
+            if (temp!= null)
+            {
+                if (isLeaf(temp))
                 {
-                    if (isLeaf(temp))
-                    {
-                       if(temp.isLessThan(parent))
-                           parent.setLeft(null);
-                       else
-                           parent.setRight(null);
-                    }
+                    if(temp.isLessThan(parent))
+                        parent.setLeft(null);
                     else
+                        parent.setRight(null);
+                }
+                else
+                {
+                    if(oneChild(temp))
                     {
-                        if(oneChild(temp))
+                        if(temp.getLeft() != null)
                         {
-                            if(temp.getLeft() != null)
-                            {
-                                if(temp.isLessThan(parent))
-                                    parent.setLeft(temp.getLeft());
-                                else
-                                    parent.setRight(temp.getRight());
-                            }
+                            if(temp.isLessThan(parent))
+                                parent.setLeft(temp.getLeft());
                             else
-                            {
-                                if(temp.isLessThan(parent))
-                                    parent.setLeft(temp.getRight());
-                                else
-                                    parent.setRight(temp.getRight());
-                            }
+                                parent.setRight(temp.getRight());
                         }
                         else
                         {
-                            BinaryTreeNode less = temp.getRight();
-                            
-                            while(less.getLeft() != null)
-                                less.getLeft();
-                            
-                            delete(less);
-                            
-                            less.setLeft(temp.getLeft());
-                            less.setRight(temp.getRight());
-                            
-                            if(temp.isLessThan(parent))
-                                parent.setLeft(less);
-                            else
-                                parent.setRight(less);
+                        if(temp.isLessThan(parent))
+                            parent.setLeft(temp.getRight());
+                        else
+                            parent.setRight(temp.getRight());
                         }
+                    }
+                    else
+                    {
+                        BinaryTreeNode less = temp.getRight();
+                            
+                        while(less.getLeft() != null)
+                            less.getLeft();
+                            
+                        delete(less);
+                            
+                        less.setLeft(temp.getLeft());
+                        less.setRight(temp.getRight());
+                            
+                        if(temp.isLessThan(parent))
+                            parent.setLeft(less);
+                        else
+                            parent.setRight(less);
                     }
                 }
             }
+        }
 
 	/**
 	 * 
@@ -243,12 +246,12 @@ public class BinaryTree {
                for(int i = 0; i < numbers.length; i++)
                bt.insert( new BinaryNodeExample(Integer.parseInt(numbers[i])));
                
-               bt.preorder(bt.root);
+               //bt.preorder(bt.root);
                
                //bt.preorder(bt.root);
-               //bt.delete(new BinaryNodeExample(27));
-               //System.out.println();
-               //bt.preorder(bt.root);
+               bt.delete(new BinaryNodeExample(37));
+               System.out.println();
+               bt.preorder(bt.root);
             }
             catch (Exception ex){}
         }
