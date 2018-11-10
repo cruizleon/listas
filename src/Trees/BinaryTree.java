@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 
 /*
@@ -242,16 +243,43 @@ public class BinaryTree {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             try
             {
-               String[] numbers = br.readLine().split(",");
-               for(int i = 0; i < numbers.length; i++)
-               bt.insert( new BinaryNodeExample(Integer.parseInt(numbers[i])));
+                int op, num;
+                //String n;
+                Scanner leer =new Scanner (System.in); 
+                do
+                {
+                    System.out.print("\n Escoja la accion que desea realizar\n");
+                    System.out.println("Menu \n 1. agragar datos al arbol \n 2. imprimir arbol en preorden \n "
+                                   + "3. imprimir arbol en postorden \n 4. imprimir arbol en inorden \n 5. buscar un nodo "
+                                   + "\n 6. eliminar un nodo\n 7. salir \n");
+                    op=leer.nextInt();
+                    switch(op)
+                    {
+                        case 1: String[] numbers = br.readLine().split(",");
+                                for(int i = 0; i < numbers.length; i++)
+                                bt.insert( new BinaryNodeExample(Integer.parseInt(numbers[i])));
+                        break;
+                        case 2: bt.preorder(bt.root);
+                        break;
+                        case 3: bt.postorder(bt.root);
+                        break;
+                        case 4: bt.inorder(bt.root);
+                        break;
+                        case 5: num=leer.nextInt();
+                                bt.search(new BinaryNodeExample(num));
+                        break;
+                        case 6: num=leer.nextInt();
+                                bt.delete(new BinaryNodeExample(num));
+                        break;
+                        case 7: System.out.print("...Salir...\n");
+
+                        break;
+                        default: System.out.print("opcion incorrecta\n");
+
+                        break;
+                    }
+                }while(op!=7);
                
-               //bt.preorder(bt.root);
-               
-               //bt.preorder(bt.root);
-               bt.delete(new BinaryNodeExample(37));
-               System.out.println();
-               bt.preorder(bt.root);
             }
             catch (Exception ex){}
         }
