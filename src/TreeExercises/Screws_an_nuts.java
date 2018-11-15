@@ -6,7 +6,6 @@
 package TreeExercises;
 
 import static TreeExercises.Screws_an_nuts.bw;
-import Trees.BinaryNodeExample;
 import Trees.BinaryTree;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

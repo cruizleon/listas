@@ -25,7 +25,7 @@ import java.util.Scanner;
  */
 public class BinaryTree {
 	
-	BinaryTreeNode root = null; //
+	public static BinaryTreeNode root = null; //
 	 
 	/**
 	 * 

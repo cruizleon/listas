@@ -3,34 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package TreeExercises;
 
 import Trees.BinaryTreeNode;
 
 /**
  *
- * @author TATIANA
+ * @author BOG-A401-E-001
  */
-public class Estante implements BinaryTreeNode {
-
-	public int value;
-	public Estante left;
-	public Estante right;
+public class Texto implements BinaryTreeNode {
+    
+	public String value;
+	public Texto left;
+	public Texto right;
 	
-	public  Estante(int value)
+	public  Texto(String value)
 	{
 		this.value = value;
 	}
-
-    Estante(String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-	
-	
 	@Override
 	public void setLeft(BinaryTreeNode node) 
 	{
-		left = (Estante)node;
+		left = (Texto)node;
 	}
 
 	
@@ -44,7 +39,7 @@ public class Estante implements BinaryTreeNode {
 	@Override
 	public void setRight(BinaryTreeNode node)
 	{
-		right = (Estante)node;
+		right = (Texto)node;
 	}
 
 	
@@ -58,22 +53,23 @@ public class Estante implements BinaryTreeNode {
 	@Override
 	public BinaryTreeNode clone()
 	{
-		return new Estante(this.value);
+		return new Texto(this.value);
 	}
 
 	
 	@Override
 	public boolean isEqual(BinaryTreeNode node) 
 	{
-            Estante temp = (Estante)node;
+            Texto temp = (Texto)node;
             return this.value == temp.value ? true : false;
 	}
 
 	@Override
 	public boolean isLessThan(BinaryTreeNode node)
 	{
-            Estante temp = (Estante)node;
-            return this.value < temp.value ? true : false;
+            Texto temp = (Texto)node;
+            int comparison = value.compareTo(temp.value);
+            return comparison < 0 ? true : false;
 	}
         public String toString()
 	{
