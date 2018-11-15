@@ -27,8 +27,8 @@ public class Screws_an_nuts {
     {
         BinaryTree tuercas = new BinaryTree();
         int n,cant;
-        bw.write("favor de ingresar el tamaño del tornillo  \n");
-        bw.flush();
+        //bw.write("favor de ingresar el tamaño del tornillo  \n");
+       // bw.flush();
         String num;
         
         //do{

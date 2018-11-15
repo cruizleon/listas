@@ -32,6 +32,7 @@ public class ExampleNode implements Node {
 	{
 		this.value = value;
 	}
+
 	
 	@Override
 	public void setNext(Node node) 
