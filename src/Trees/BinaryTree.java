@@ -1,5 +1,6 @@
 package Trees;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -283,4 +284,17 @@ public class BinaryTree {
             }
             catch (Exception ex){}
         }
+
+    public void nivel(BinaryTreeNode node) {
+        BinaryTreeNode cola=root;
+		while(cola != null)
+		{
+                    System.out.print(node.toString() + " ");
+                    node=cola;
+                    if(node.getLeft()!=null)
+                        nivel(node.getLeft());
+                    if(node.getRight()!=null)
+                        nivel(node.getRight());
+		}
+    }
 }
