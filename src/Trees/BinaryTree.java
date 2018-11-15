@@ -257,7 +257,7 @@ public class BinaryTree {
                     {
                         case 1: String[] numbers = br.readLine().split(",");
                                 for(int i = 0; i < numbers.length; i++)
-                                bt.insert( new BinaryNodeExample(Integer.parseInt(numbers[i])));
+                                    bt.insert( new BinaryNodeExample(Integer.parseInt(numbers[i])));
                         break;
                         case 2: bt.preorder(bt.root);
                         break;
