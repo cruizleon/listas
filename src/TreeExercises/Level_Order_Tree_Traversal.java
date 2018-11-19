@@ -43,14 +43,14 @@ public class Level_Order_Tree_Traversal
             {             
                 cant = Integer.parseInt(br.readLine());
                 
-                numbers = br.readLine().split(",");
+                numbers = br.readLine().split(" ");
                 for(int j = 0; j < numbers.length; j++)
                     n.insert( new BinaryNodeExample(Integer.parseInt(numbers[j])));
                 
                 lateral=numbers;
                 for(k=0;k<cant;k++){
                     n.nivel(new BinaryNodeExample(Integer.parseInt(lateral[k])),cant);
-                    //lateral[k]=Integer.toBinaryString(4);
+                    //lateral[k]=Integer.toBinaryString();
                 }
             }
             
