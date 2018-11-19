@@ -9,7 +9,8 @@ import Trees.BinaryTreeNode;
 
 /**
  *
- * @author TATIANA
+ * @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class Estante implements BinaryTreeNode {
 

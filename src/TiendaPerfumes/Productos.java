@@ -8,6 +8,7 @@ package TiendaPerfumes;
 import LinearDataStructures.List;
 import LinearDataStructures.Queue;
 import LinearDataStructures.Stack;
+import Trees.BinaryTree;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -25,6 +26,7 @@ import java.io.OutputStreamWriter;
 public class Productos { 
     public static List Perfumeria= new List();
     public static List Carrito = new List();
+    public static BinaryTree Node_tree=new BinaryTree();
     public static List HistorialCompras = new List();
 	
     static BufferedWriter bw = new BufferedWriter( new OutputStreamWriter( System.out ) );
@@ -41,7 +43,9 @@ public class Productos {
     {
         String menu = "\nMenu \n 1. imprimir lista de productos \n 2. agregar un nuevo producto a la lista \n "
                         + "3. eliminar un producto en especifico por su nodo\n 4. Buscar un producto por su codigo "
-                        + "\n 5. Añadir al carrito \n 6. Confirmar compra de los productos en el carro\n 7. ver historial de compras \n 8. salir de la tienda\n";
+                        + "\n 5. Añadir al carrito \n 6. Confirmar compra de los productos en el carro\n "
+                        + "7. ver historial de compras \n 8. ordenar los productos por precio de menor a mayor \n"
+                        + "9. salir de la tienda \n";
         return menu;
     }
     public static void historial()
@@ -370,6 +374,7 @@ public class Productos {
             bw.flush();
             precio=Integer.parseInt(br.readLine());
             Perfumeria.insertAtBegin(new Perfumeria(nombre,codigo,marca,dirijidoA,precio));
+            Node_tree.insert(new Node_tree(nombre,codigo,marca,dirijidoA,precio));
         }catch(Exception ex) {}
     }
    
@@ -390,7 +395,20 @@ public class Productos {
         Perfumeria.insertAtEnd(new Perfumeria("Juicy Couture","237","Viva La Juicy","mujeres",100000));
         Perfumeria.insertAtEnd(new Perfumeria("La Vie Est Belle","716","LANCOME","mujeres",200000));
         Perfumeria.insertAtEnd(new Perfumeria("Michael Kors","884","Michael Kors","mujeres",150000));
+        Node_tree.insert(new Node_tree("1millon","896","paco rabanne","hombres",65000));
+        Node_tree.insert(new Node_tree("2.212","245","Carolina Herrera","hombres",21000));
+        Node_tree.insert(new Node_tree("Giorgio Armani","554","Acqua Di Gio","hombre",19000));
+        Node_tree.insert(new Node_tree("Issey Miyake","978","L’eau D’issey Pour Homme","Hombres",20000));
+        Node_tree.insert(new Node_tree("Invictus","715","Paco Rabanne","hombres",50000));
+        Node_tree.insert(new Node_tree("Bvlgari","965","Homme Soir","hombres",50000));
+        Node_tree.insert(new Node_tree("Versace","854","Bright Crystal","mujeres",80000));
+        Node_tree.insert(new Node_tree("Pleasures","112","Estée Lauder","mujeres",27000));
+        Node_tree.insert(new Node_tree("L’eau De Issey","965","Issey Miyake","mujeres",45000));
+        Node_tree.insert(new Node_tree("Juicy Couture","237","Viva La Juicy","mujeres",100000));
+        Node_tree.insert(new Node_tree("La Vie Est Belle","716","LANCOME","mujeres",200000));
+        Node_tree.insert(new Node_tree("Michael Kors","884","Michael Kors","mujeres",150000));
           
+        
         bw.write("...LISTA DE PRODUCTOS...\n");
         bw.flush();
         Perfumeria.printList();
@@ -417,7 +435,9 @@ public class Productos {
                 break;
                 case 7: historial();
                 break;
-                case 8: bw.write("\n...Gracias por su visita a la tienda... \n");
+                case 8: Node_tree.inorder(Node_tree.root);
+                break;
+                case 9: bw.write("\n...Gracias por su visita a la tienda... \n");
                         bw.flush();
                 break;
                 default: bw.write("opcion incorrecta\n");
@@ -425,7 +445,7 @@ public class Productos {
 
                 break;
             }
-        }while(op!=8);
+        }while(op!=9);
     }
     
 }

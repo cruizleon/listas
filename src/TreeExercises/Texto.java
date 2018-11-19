@@ -10,7 +10,8 @@ import Trees.BinaryTreeNode;
 
 /**
  *
- * @author BOG-A401-E-001
+ * @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class Texto implements BinaryTreeNode {
     

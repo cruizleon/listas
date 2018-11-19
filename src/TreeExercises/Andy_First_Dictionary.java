@@ -20,7 +20,8 @@ import java.io.OutputStreamWriter;
 
 /**
  *
- * @author BOG-A401-E-001
+ * @author Cristhian Javier Ruiz Leon
+ *         ID: 597465
  */
 public class Andy_First_Dictionary {
     static BufferedWriter bw = new BufferedWriter( new OutputStreamWriter( System.out ) );
