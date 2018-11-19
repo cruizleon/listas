@@ -435,7 +435,9 @@ public class Productos {
                 break;
                 case 7: historial();
                 break;
-                case 8: Node_tree.inorder(Node_tree.root);
+                case 8: bw.write("\n...losproductos ordenados de precio menor a mayor son... \n");
+                        bw.flush();
+                        Node_tree.inorder(Node_tree.root);
                 break;
                 case 9: bw.write("\n...Gracias por su visita a la tienda... \n");
                         bw.flush();

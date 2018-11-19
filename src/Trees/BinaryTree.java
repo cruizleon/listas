@@ -285,17 +285,37 @@ public class BinaryTree {
             catch (Exception ex){}
         }
 
-    public void nivel(BinaryTreeNode node) {
+    public void nivel(BinaryTreeNode node,int l) {
         BinaryTreeNode cola=root;
-		while(cola != null)
-		{
-                    System.out.print(node.toString() + " ");
-                    node=cola;
-                    if(node.getLeft()!=null)
-                        nivel(node.getLeft());
-                    if(node.getRight()!=null)
-                        nivel(node.getRight());
-		}
+        BinaryTreeNode hijo=cola;
+        String [] orden=null;
+        int cont =0;
+        int sig=0,left=0,right=0;
+        
+        BinaryTreeNode temp = root;
+        for(int i=0;i<l;i++){
+            if(temp.isEqual(node))
+                System.out.print(temp + ",");
+            else
+                if(left==0)
+                {
+                    if(node.isLessThan(temp))
+                    {
+                        temp = temp.getLeft(); 
+                        left=1;
+                    }
+                    else
+                    {
+                        temp = temp.getRight();
+                        right=1;
+                    }
+                }
+                else
+                {
+                    temp = temp.getRight();
+                    right=1;
+                }
+        }
     }
 
 

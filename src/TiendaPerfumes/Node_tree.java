@@ -72,7 +72,7 @@ public class Node_tree implements BinaryTreeNode {
 	public boolean isEqual(BinaryTreeNode node) 
 	{
             Node_tree temp = (Node_tree)node;
-            return this.Preci == temp.Preci ? true : false;
+            return this.NumeroProdu == temp.NumeroProdu ? true : false;
 	}
 
 	@Override

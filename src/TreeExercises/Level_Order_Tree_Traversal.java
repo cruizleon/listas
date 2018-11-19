@@ -26,13 +26,16 @@ public class Level_Order_Tree_Traversal
 {
     static BufferedWriter bw = new BufferedWriter( new OutputStreamWriter( System.out ) );
     static BufferedReader br = new BufferedReader( new InputStreamReader( System.in ) );
-    
+    public static String[]lateral=null;
+    public static int cant=0;
     public static void main(String[]args) 
     {
         try
         {
+            
+            String[]numbers=null;
             BinaryTree n = new BinaryTree();
-            int cas, cant;
+            int cas,k;
             
             cas = Integer.parseInt(br.readLine());
             
@@ -40,12 +43,17 @@ public class Level_Order_Tree_Traversal
             {             
                 cant = Integer.parseInt(br.readLine());
                 
-                String[] numbers = br.readLine().split(",");
+                numbers = br.readLine().split(",");
                 for(int j = 0; j < numbers.length; j++)
-                    n.insert( new BinaryNodeExample(Integer.parseInt(numbers[i])));
+                    n.insert( new BinaryNodeExample(Integer.parseInt(numbers[j])));
                 
+                lateral=numbers;
+                for(k=0;k<cant;k++){
+                    n.nivel(new BinaryNodeExample(Integer.parseInt(lateral[k])),cant);
+                    //lateral[k]=Integer.toBinaryString(4);
+                }
             }
-            n.nivel(n.root);
+            
         }catch(Exception ex) {}
     }
 
