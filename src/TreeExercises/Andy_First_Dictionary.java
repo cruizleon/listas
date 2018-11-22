@@ -33,34 +33,27 @@ public class Andy_First_Dictionary {
         BinaryTree palabras = new BinaryTree();
         List caracter= new List();
         String text;
-        String []caracteres=null;
+        String []caracteres;
         text = br.readLine();
         
-        System.out.println(text.toUpperCase());
+        //System.out.println(text.toLowerCase());
         
-        for (int i=0; i<caracteres.length;i++)
-        {
-            
-        }
-        Node head=null;
-        Node node=null;
-        Node temp = head;
+        caracter.insertAtBegin(new caracter(text.toLowerCase()));
+        caracter.printList();
+       // Node head=null;
+        //Node node=null;
+       // Node temp = head;
 		
-		while(temp != null)
-		{
-			if(temp.isEqual(node))
-			{	
-				caracter.insertAtEnd(temp.clone());
-			}
+		//while(temp != null)
+		//{
+			//if(temp.isEqual(node))
+			//{	
+			//	caracter.insertAtEnd(temp.clone());
+			//}
 			
-			temp = temp.getNext();
-                        palabras.insert((BinaryTreeNode) temp);
-		}
-		
-		
-        
-        
-        
+			//temp = temp.getNext();
+                       // palabras.insert((BinaryTreeNode) temp);
+		//}
 
     }
 }

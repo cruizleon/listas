@@ -23,7 +23,7 @@ public class StringNode implements Node {
 	/*
 	 * 
 	 */
-	char character;
+	public static char character;
 	Node next = null;
 	
 	public StringNode(char character) 

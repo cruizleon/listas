@@ -12,7 +12,8 @@ import java.io.OutputStreamWriter;
 
 /**
  *
- * @author BOG-A405-E-024
+ * @author Cristhian Javier Ruizleon
+ *         ID: 597465
  */
 public class Main {
     
