@@ -95,6 +95,7 @@ public class BinaryTree {
 					temp = temp.getRight();
 		}
 		
+                System.out.println(temp);
 		return temp;
 	}
 

@@ -49,7 +49,7 @@ public class ProblemsExamples {
 	 */
 	public static String dna_pride(int length, String input)
 	{
-		String output = "";
+		String output = "\n";
 		if(!input.contains("U"))
 			for(int i = 0; i < length; i++)
 				switch(input.charAt(i))
@@ -60,7 +60,7 @@ public class ProblemsExamples {
 					default:	output += "A";	break;
 				}
 		else
-			output = "Error RNA nucleobases found!";
+			output = "\nError RNA nucleobases found!";
 		
 		return output;
 	}
@@ -94,7 +94,7 @@ public class ProblemsExamples {
 	 */
 	public static String gcd_string(int a, int b)
 	{
-		String number_binary = "";
+		String number_binary = "\n";
 		
 		if(a % b == 0)
 		{
@@ -133,6 +133,7 @@ public class ProblemsExamples {
 				if(a.charAt(i) == b.charAt(j)) 
 				{
 					found = true;
+                                        counter += 1;
 					break;
 				}
 			
@@ -140,9 +141,11 @@ public class ProblemsExamples {
 				counter += 1;
 			else
 				b = b.substring(0, j) + b.substring(j + 1);
+                                
 		}
 		
-		return counter;
+		System.out.print(counter);
+            return 0;
 	}
 	
 	
@@ -178,7 +181,7 @@ public class ProblemsExamples {
 	 */
 	public static String print_first_occurence(String input)
 	{
-		String response = "";
+		String response = "\n";
 		boolean found;
 		
 		for(int i = 0; i < input.length(); i++)

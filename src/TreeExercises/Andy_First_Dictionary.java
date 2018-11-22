@@ -40,7 +40,6 @@ public class Andy_First_Dictionary {
         
         for (int i=0; i<caracteres.length;i++)
         {
-            caracter.insertAtBegin(new ExampleNode());
             
         }
         Node head=null;
