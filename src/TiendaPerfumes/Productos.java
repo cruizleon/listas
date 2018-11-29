@@ -424,8 +424,11 @@ public class Productos {
                 case 2: Add_Product();
                         Perfumeria.printList();
                 break;
-                case 3: remove_product();
-                        Perfumeria.printList();
+                case 3: String num=br.readLine();
+                        Node_tree.delete(new Node_tree(null,num,null,null,0));
+                        Node_tree.preorder(Node_tree.root);
+                        //remove_product();
+                        //Perfumeria.printList();
                 break;
                 case 4: Look_For_Product();
                 break;

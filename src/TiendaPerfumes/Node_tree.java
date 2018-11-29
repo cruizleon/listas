@@ -5,7 +5,7 @@
  */
 package TiendaPerfumes;
 
-import Trees.BinaryNodeExample;
+
 import Trees.BinaryTreeNode;
 
 /**
@@ -31,7 +31,6 @@ public class Node_tree implements BinaryTreeNode {
        this.PerfumesPar=para;
        this.Preci = precio;
    }
-	
 	
 	@Override
 	public void setLeft(BinaryTreeNode node) 
@@ -83,6 +82,6 @@ public class Node_tree implements BinaryTreeNode {
 	}
         public String toString()
 	{
-		return this.NombreProdu +", Codigo:" + NumeroProdu + ", Marca: " + Marc +", para: "+PerfumesPar+", valor total $" + Preci +"\n "+",";
+		return this.NombreProdu +", Codigo:" + NumeroProdu + ", Marca: " + Marc +", para: "+PerfumesPar+", valor total $" + Preci +"\n ";
 	}
 }
